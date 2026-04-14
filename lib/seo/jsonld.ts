@@ -52,13 +52,13 @@ export function localBusinessJsonLd() {
       "@type": "Review",
       author: {
         "@type": "Person",
-        name: r.author,
+        name: r.name,
       },
       datePublished: r.date,
       reviewBody: r.text,
       reviewRating: {
         "@type": "Rating",
-        ratingValue: r.rating,
+        ratingValue: r.stars,
         bestRating: 5,
         worstRating: 1,
       },

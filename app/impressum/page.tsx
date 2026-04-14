@@ -12,11 +12,11 @@ export default function ImpressumPage() {
     <>
       <PageHero label="Rechtliches" title="Impressum" />
 
-      <section className="section bg-white">
+      <section className="section section-surface">
         <div className="container max-w-2xl">
           <AnimatedSection>
             <div className="prose" style={{ fontSize: "16px", lineHeight: 1.75, color: "var(--ink)" }}>
-              <h2>Unternehmensangaben</h2>
+              <h2 className="text-gradient-heading">Unternehmensangaben</h2>
               <address className="not-italic" style={{ lineHeight: 2 }}>
                 <strong>Malergeschäft Bernhard AG</strong><br />
                 Säntisstrasse 30<br />
@@ -40,7 +40,7 @@ export default function ImpressumPage() {
                 </tbody>
               </table>
 
-              <h2 className="mt-10">Haftungsausschluss</h2>
+              <h2 className="mt-10 text-gradient-heading">Haftungsausschluss</h2>
               <p>
                 Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen
                 Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und
@@ -54,14 +54,14 @@ export default function ImpressumPage() {
                 werden ausgeschlossen.
               </p>
 
-              <h2 className="mt-10">Urheberrechte</h2>
+              <h2 className="mt-10 text-gradient-heading">Urheberrechte</h2>
               <p>
                 Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos
                 oder anderen Dateien auf dieser Website gehören ausschliesslich
                 Malergeschäft Bernhard AG oder den speziell genannten Rechtsinhabern.
               </p>
 
-              <h2 className="mt-10">Datenschutz</h2>
+              <h2 className="mt-10 text-gradient-heading">Datenschutz</h2>
               <p>
                 Gestützt auf Artikel 13 der schweizerischen Bundesverfassung und die
                 datenschutzrechtlichen Bestimmungen des Bundes hat jede Person

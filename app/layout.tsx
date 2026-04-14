@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 import { localBusinessJsonLd } from "@/lib/seo/jsonld";
 
 const inter = Inter({
@@ -36,6 +37,13 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1B4F91",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -49,10 +57,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased overflow-x-clip">
         <Nav />
-        <main className="flex-1 pt-[68px]">{children}</main>
+        <main
+          className="flex-1 main-content"
+          style={{ paddingTop: "calc(68px + env(safe-area-inset-top, 0px))" }}
+        >
+          {children}
+        </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

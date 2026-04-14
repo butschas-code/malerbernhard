@@ -8,48 +8,24 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   {
     label: "Malerarbeiten",
-    href: "/malerarbeiten/innenraum",
-    children: [
-      { label: "Innenraum", href: "/malerarbeiten/innenraum" },
-      { label: "Aussenraum & Fassade", href: "/malerarbeiten/aussenraum-fassade" },
-      { label: "Raumgestaltung", href: "/malerarbeiten/raumgestaltung" },
-      { label: "Historische Bauten", href: "/malerarbeiten/historische-bauten" },
-      { label: "kt.COLOR", href: "/malerarbeiten/kt-color" },
-    ],
+    href: "/malerarbeiten",
   },
   {
     label: "Spezialarbeiten",
-    href: "/spezialarbeiten/schimmelpilzsanierung",
-    children: [
-      { label: "Schimmelpilzsanierung", href: "/spezialarbeiten/schimmelpilzsanierung" },
-      { label: "Gesundes Wohnen", href: "/spezialarbeiten/gesundes-wohnen" },
-      { label: "Naturofloor", href: "/spezialarbeiten/naturofloor" },
-      { label: "Spritzwerk", href: "/spezialarbeiten/spritzwerk" },
-      { label: "Niederdruck-Strahlen", href: "/spezialarbeiten/niederdruck" },
-    ],
+    href: "/spezialarbeiten",
   },
   {
     label: "Über uns",
     href: "/ueber-uns",
     children: [
-      { label: "Maler Bernhard", href: "/ueber-uns" },
+      { label: "Über uns", href: "/ueber-uns" },
       { label: "Team", href: "/ueber-uns/team" },
-      { label: "Vier Generationen", href: "/ueber-uns/vier-generationen" },
-      { label: "Philosophie", href: "/ueber-uns/philosophie" },
-      { label: "TOP-Ausbildungsbetrieb", href: "/ueber-uns/top-ausbildungsbetrieb" },
-      { label: "Leistungssport", href: "/ueber-uns/leistungssport" },
-      { label: "Kultur & Sport", href: "/ueber-uns/kultur-sport" },
-      { label: "Knowhow", href: "/ueber-uns/knowhow" },
+      { label: "Ausbildungsbetrieb", href: "/ueber-uns/ausbildungsbetrieb" },
     ],
   },
   {
     label: "Kontakt",
     href: "/kontakt",
-    children: [
-      { label: "Kontakt", href: "/kontakt" },
-      { label: "Anfrage stellen", href: "/kontakt/anfrage" },
-      { label: "Links", href: "/kontakt/links" },
-    ],
   },
   {
     label: "Bewertungen",
@@ -76,13 +52,12 @@ export default function Nav() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
-  const NAV_BG = "#224f9d";
-
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300"
       style={{
-        background: NAV_BG,
+        paddingTop: "env(safe-area-inset-top, 0px)",
+        background: `linear-gradient(135deg, var(--brand) 0%, color-mix(in srgb, var(--brand-tertiary) 22%, var(--brand)) 58%, color-mix(in srgb, var(--brand-secondary) 14%, var(--brand)) 100%)`,
         boxShadow: scrolled ? "0 2px 16px rgba(0,0,0,0.25)" : "none",
       }}
     >
@@ -160,13 +135,8 @@ export default function Nav() {
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
             <Link
-              href="/kontakt/anfrage"
-              className="hidden md:inline-flex items-center gap-2 font-bold text-[13.5px] px-5 py-2.5 rounded transition-all duration-200 hover:scale-[1.03] hover:shadow-lg active:scale-[0.98]"
-              style={{
-                background: "var(--brand-red)",
-                color: "white",
-                boxShadow: "0 2px 10px rgba(200,16,46,0.45)",
-              }}
+              href="/kontakt#anfrage"
+              className="btn btn-nav-cta hidden md:inline-flex items-center gap-2 text-[13.5px] px-5 py-2.5 rounded transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
@@ -203,44 +173,47 @@ export default function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden overflow-hidden"
-            style={{ background: "#1a3f80", borderTop: "1px solid rgba(255,255,255,0.15)" }}
+            style={{
+              background:
+                "linear-gradient(180deg, color-mix(in srgb, var(--brand-tertiary) 16%, #1a3f80) 0%, #152d55 100%)",
+              borderTop: "1px solid rgba(255,255,255,0.15)",
+            }}
           >
             <div className="container py-4 space-y-1">
               {navItems.map((item) => (
                 <div key={item.label}>
-                  <button
-                    className="w-full text-left px-3 py-2.5 text-[15px] font-semibold text-white flex items-center justify-between"
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === item.label ? null : item.label)
-                    }
-                  >
-                    {item.label}
-                    {item.children && (
-                      <svg
-                        className={`w-4 h-4 transition-transform text-white/60 ${openDropdown === item.label ? "rotate-180" : ""}`}
-                        viewBox="0 0 16 16"
-                        fill="none"
+                  {item.children ? (
+                    <>
+                      <button
+                        className="w-full text-left px-3 py-2.5 text-[15px] font-semibold text-white flex items-center justify-between"
+                        onClick={() =>
+                          setOpenDropdown(openDropdown === item.label ? null : item.label)
+                        }
                       >
-                        <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      </svg>
-                    )}
-                  </button>
-
-                  {item.children && openDropdown === item.label && (
-                    <div className="pl-4 space-y-0.5">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-3 py-2 text-[14px] text-white/65 hover:text-white"
+                        {item.label}
+                        <svg
+                          className={`w-4 h-4 transition-transform text-white/60 ${openDropdown === item.label ? "rotate-180" : ""}`}
+                          viewBox="0 0 16 16"
+                          fill="none"
                         >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-
-                  {!item.children && (
+                          <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        </svg>
+                      </button>
+                      {openDropdown === item.label && (
+                        <div className="pl-4 space-y-0.5">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="block px-3 py-2 text-[14px] text-white/65 hover:text-white"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
                     <Link
                       href={item.href}
                       className="block px-3 py-2.5 text-[15px] font-semibold text-white"
@@ -252,9 +225,8 @@ export default function Nav() {
               ))}
               <div className="pt-3">
                 <Link
-                  href="/kontakt/anfrage"
-                  className="flex items-center justify-center gap-2 w-full font-bold text-[14px] py-3 rounded"
-                  style={{ background: "var(--brand-red)", color: "white" }}
+                  href="/kontakt#anfrage"
+                  className="btn btn-nav-cta flex items-center justify-center gap-2 w-full text-[14px] py-3"
                 >
                   Offerte anfragen
                 </Link>

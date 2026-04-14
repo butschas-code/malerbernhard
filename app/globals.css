@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
-/* ─── Brand tokens (Bernhard blue #1B4F91 + red #C8102E) ─── */
+/* ─── Brand tokens: primary #1B4F91 · secondary #149583 · tertiary #3E27A4 · accent red #C8102E ─── */
 :root {
-  --brand:        #1B4F91;
-  --brand-dark:   #143870;
-  --brand-light:  #2E6AB5;
-  --brand-red:    #C8102E;
+  --brand:            #1B4F91;
+  --brand-secondary:  #149583;
+  --brand-tertiary:   #3E27A4;
+  --brand-dark:       #143870;
+  --brand-light:      #2E6AB5;
+  --brand-red:        #C8102E;
   --paper:        #F5F2ED;
   --paper-dark:   #EDE9E2;
   --ink:          #1A1A1A;
@@ -19,15 +21,32 @@
   --foreground: var(--ink);
 
   --radius: 4px;
+
+  /* CTA: tertiary → secondary only */
+  --btn-primary-bg: linear-gradient(
+    135deg,
+    var(--brand-tertiary) 0%,
+    var(--brand-secondary) 100%
+  );
+  --btn-primary-bg-hover: linear-gradient(
+    135deg,
+    color-mix(in srgb, black 14%, var(--brand-tertiary)) 0%,
+    color-mix(in srgb, black 12%, var(--brand-secondary)) 100%
+  );
+  --btn-primary-shadow:
+    0 2px 16px color-mix(in srgb, var(--brand-tertiary) 40%, transparent),
+    0 2px 12px color-mix(in srgb, var(--brand-secondary) 30%, transparent);
 }
 
 @theme inline {
   --color-background:   var(--paper);
   --color-foreground:   var(--ink);
-  --color-brand:        var(--brand);
-  --color-brand-dark:   var(--brand-dark);
-  --color-brand-light:  var(--brand-light);
-  --color-brand-red:    var(--brand-red);
+  --color-brand:            var(--brand);
+  --color-brand-secondary:  var(--brand-secondary);
+  --color-brand-tertiary:   var(--brand-tertiary);
+  --color-brand-dark:       var(--brand-dark);
+  --color-brand-light:      var(--brand-light);
+  --color-brand-red:        var(--brand-red);
   --color-paper:        var(--paper);
   --color-paper-dark:   var(--paper-dark);
   --color-ink:          var(--ink);
@@ -44,6 +63,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -53,6 +74,13 @@ body {
   font-size: 17px;
   line-height: 1.65;
   min-height: 100dvh;
+  min-height: 100svh;
+}
+
+/* Reserve space when cookie banner is visible (mobile-friendly, no content hidden behind bar) */
+main.main-content {
+  padding-bottom: var(--cookie-banner-offset, 0px);
+  transition: padding-bottom 0.35s ease;
 }
 
 /* ─── Typography scale ─── */
@@ -69,6 +97,23 @@ h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
 h4 { font-size: 1.25rem; font-weight: 600; }
 
 p { color: var(--ink); opacity: 0.85; }
+
+/* Home services bento: global h1–h6 and p rules load after utilities and force --ink */
+.bento-card-overlay h3,
+.bento-card-overlay p,
+.bento-card-overlay span {
+  color: #fff !important;
+}
+/* Reset global `p { opacity: 0.85 }` for visible blurbs only — hover-reveal lines use <div> */
+.bento-card-overlay p {
+  opacity: 1;
+}
+
+/* Footer: global `p` would otherwise force ink on address lines */
+footer p {
+  color: #fff !important;
+  opacity: 1 !important;
+}
 
 a { color: inherit; text-decoration: none; }
 a:focus-visible {
@@ -89,6 +134,142 @@ a:focus-visible {
   padding-block: clamp(5rem, 10vw, 9rem);
 }
 
+/* Interior pages — same surfaces as home (intro + services bands) */
+.section-surface {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--brand-secondary) 6%, white) 55%,
+    color-mix(in srgb, var(--brand-tertiary) 5%, white) 100%
+  );
+}
+.section-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+  background-image: radial-gradient(
+      ellipse 90% 60% at 10% 20%,
+      color-mix(in srgb, var(--brand-tertiary) 14%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 90% 80%,
+      color-mix(in srgb, var(--brand-secondary) 12%, transparent),
+      transparent
+    );
+}
+
+.section-surface-muted {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    var(--paper) 0%,
+    color-mix(in srgb, var(--brand-secondary) 9%, var(--paper)) 42%,
+    color-mix(in srgb, var(--brand-tertiary) 7%, var(--paper)) 100%
+  );
+}
+.section-surface-muted::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+  background-image: radial-gradient(
+      circle at 18% 25%,
+      color-mix(in srgb, var(--brand-tertiary) 16%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 82% 75%,
+      color-mix(in srgb, var(--brand-secondary) 14%, transparent) 0%,
+      transparent 48%
+    );
+}
+
+/* Sticky TOC / jump nav strip (malerarbeiten, spezialarbeiten) */
+.section-jump-nav {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--brand-secondary) 5%, white) 100%
+  );
+}
+.section-jump-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+  background-image: radial-gradient(
+    ellipse 85% 45% at 50% 0%,
+    color-mix(in srgb, var(--brand-tertiary) 12%, transparent),
+    transparent
+  );
+}
+
+.section-surface .container,
+.section-surface-muted .container,
+.section-jump-nav .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom CTA band — matches home “Bereit für Ihr Projekt?” */
+.section-cta-soft {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(5rem, 10vw, 9rem);
+  background: linear-gradient(
+    135deg,
+    var(--paper-dark) 0%,
+    color-mix(in srgb, var(--brand-tertiary) 8%, var(--paper-dark)) 45%,
+    color-mix(in srgb, var(--brand-secondary) 7%, var(--paper)) 100%
+  );
+}
+.section-cta-soft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+  background-image: radial-gradient(
+      ellipse 120% 80% at 0% 100%,
+      color-mix(in srgb, var(--brand-tertiary) 22%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 0%,
+      color-mix(in srgb, var(--brand-secondary) 16%, transparent),
+      transparent
+    );
+}
+.section-cta-soft .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Full-width brand sections: primary blended with tertiary + secondary */
+.section-brand {
+  background: linear-gradient(
+    135deg,
+    var(--brand) 0%,
+    color-mix(in srgb, var(--brand-tertiary) 38%, var(--brand)) 45%,
+    color-mix(in srgb, var(--brand-secondary) 30%, var(--brand)) 100%
+  );
+}
+
 /* ─── Texture overlay utility ─── */
 .texture-paper::after {
   content: "";
@@ -100,14 +281,58 @@ a:focus-visible {
   mix-blend-mode: multiply;
 }
 
-/* ─── Brand blue divider ─── */
+/* ─── Brand divider (accent → secondary → tertiary) ─── */
 .brand-rule {
   display: block;
-  width: 3rem;
+  width: 3.5rem;
   height: 3px;
-  background: var(--brand-red);
+  background: linear-gradient(
+    90deg,
+    var(--brand-red) 0%,
+    var(--brand-secondary) 52%,
+    var(--brand-tertiary) 100%
+  );
   border-radius: 2px;
   margin-bottom: 1.5rem;
+}
+
+/* Gradient text (secondary ↔ tertiary); on light backgrounds */
+.text-gradient-heading {
+  background: linear-gradient(
+    135deg,
+    var(--brand-tertiary) 0%,
+    color-mix(in srgb, var(--brand-secondary) 55%, var(--brand-tertiary)) 55%,
+    var(--brand-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero: bright gradient on dark video */
+.text-gradient-hero {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--brand-secondary) 45%, white) 40%,
+    color-mix(in srgb, var(--brand-tertiary) 42%, white) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* On dark brand bands */
+.text-gradient-on-dark {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    color-mix(in srgb, var(--brand-secondary) 35%, white) 45%,
+    color-mix(in srgb, var(--brand-tertiary) 38%, white) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ─── Button primitives ─── */
@@ -124,37 +349,80 @@ a:focus-visible {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  touch-action: manipulation;
 }
 
 .btn-primary {
-  background: var(--brand);
+  background: var(--btn-primary-bg);
   color: #fff;
+  box-shadow: var(--btn-primary-shadow);
 }
 .btn-primary:hover {
-  background: var(--brand-dark);
+  background: var(--btn-primary-bg-hover);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    0 6px 24px color-mix(in srgb, var(--brand-tertiary) 38%, transparent),
+    0 4px 12px color-mix(in srgb, var(--brand-secondary) 28%, transparent);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 3px;
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--brand);
-  border: 2px solid var(--brand);
+  color: var(--brand-tertiary);
+  border: 2px solid var(--brand-secondary);
+  box-shadow: none;
 }
 .btn-outline:hover {
-  background: var(--brand);
+  background: var(--btn-primary-bg);
   color: #fff;
+  border-color: transparent;
   transform: translateY(-1px);
+  box-shadow: var(--btn-primary-shadow);
+}
+.btn-outline:focus-visible {
+  outline: 2px solid var(--brand-tertiary);
+  outline-offset: 3px;
 }
 
 .btn-white {
   background: #fff;
-  color: var(--brand);
+  color: var(--brand-tertiary);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--brand-tertiary) 12%, transparent) inset;
 }
 .btn-white:hover {
-  background: var(--paper);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, white 88%, var(--brand-tertiary)) 0%,
+    color-mix(in srgb, white 85%, var(--brand-secondary)) 100%
+  );
+  color: var(--brand-tertiary);
   transform: translateY(-1px);
   box-shadow: var(--shadow-lg);
+}
+.btn-white:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 3px;
+}
+
+/* Nav bar: high-contrast CTA on blue gradient header */
+.btn-nav-cta {
+  background: #fff;
+  color: var(--brand-tertiary);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+.btn-nav-cta:hover {
+  background: #fff;
+  color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+}
+.btn-nav-cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 /* ─── Stamp micro-labels ─── */
@@ -189,7 +457,7 @@ a:focus-visible {
 
 /* ─── Selection ─── */
 ::selection {
-  background: var(--brand);
+  background: var(--brand-tertiary);
   color: #fff;
 }
 

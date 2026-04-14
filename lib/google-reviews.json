@@ -1,0 +1,120 @@
+{
+  "business": "Malergeschäft Bernhard AG",
+  "address": "Säntisstrasse 30, 8305 Dietlikon, Schweiz",
+  "rating": 5.0,
+  "totalRatings": 26,
+  "textReviews": 10,
+  "scrapedAt": "2026-04-14",
+  "source": "Google Maps",
+  "note": "26 Bewertungen insgesamt; 16 nur Sterne ohne Text. 5 Bewertungen mit truncated=true waren in der Google-Maps-Oberfläche abgeschnitten und konnten nicht vollständig geöffnet werden.",
+  "reviews": [
+    {
+      "name": "Samuel Frühauf",
+      "stars": 5,
+      "date": "vor 2 Monaten",
+      "text": "Sehr empfehlenswertes Malergeschäft. Herr Hauswirth arbeitet sehr sauber, und das Ergebnis ist absolut überzeugend. Man merkt, dass die Kundenzufriedenheit bei Malergeschäft Bernhard oberste Priorität hat und das eigene Engagement für ein perfektes Ergebnis",
+      "truncated": true,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank für Ihre wunderbare Bewertung und die netten Worte! 😊\nWir freuen uns sehr, dass Sie mit unserer Arbeit und dem Ergebnis so zufrieden sind. Saubere Arbeit und höchste Qualität sind unsere obersten Prioritäten – umso mehr",
+        "truncated": true
+      }
+    },
+    {
+      "name": "Alexander Zeindler",
+      "stars": 5,
+      "date": "vor 9 Monaten",
+      "text": "Das Ergebnis ist einfach fantastisch. Das Haus glänzt wie neu!\n\nLukas war so professionell, präzise und auch unglaublich freundlich. Wir werden",
+      "truncated": true,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank für das fantastische Feedback! Wir freuen uns sehr, dass Sie mit dem Ergebnis so zufrieden sind und sowohl Lukas' Arbeit als auch Thomas' Koordination beeindruckend fanden. Solches Lob motiviert uns ungemein – wir freuen uns schon auf unser nächstes gemeinsames Projekt! 😊",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Roman Knights",
+      "stars": 5,
+      "date": "vor einem Jahr",
+      "text": "Hervorragende Beratung von Thomas und wunderbare Arbeit von Lukas. Meine Physiotherapiepraxis wurde komplett von ihnen gestrichen (ich bin äusserst zufrieden), und jetzt haben sie noch das Kinderzimmer in Bergblau von kt.COLOR dazugefügt. Einfach genial!!!",
+      "truncated": false,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank!",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Zhala",
+      "stars": 5,
+      "date": "vor 11 Monaten",
+      "text": "Unser Gebäude wurde vom Malergeschäft Bernhard mit der Renovation unseres Treppenhauses und diversen weiteren Arbeiten beauftragt, und wir sind mit dem Ergebnis vollständig zufrieden. Die Qualität der Arbeit war hervorragend – sauber, präzise und",
+      "truncated": true,
+      "ownerResponse": null
+    },
+    {
+      "name": "Laura Zanelli",
+      "stars": 5,
+      "date": "vor 8 Monaten",
+      "text": "Herr Keller hat mich hervorragend beraten und meine Fragen umgehend beantwortet.\nKüche und Esszimmer sind perfekt gestrichen. 👍\nDas gesamte Team ist ausserordentlich freundlich.\nSehr empfehlenswert.",
+      "truncated": true,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank für Ihre positive Bewertung! Es freut uns sehr, dass Sie mit unserer sauberen und guten Arbeit zufrieden sind. Wir geben Ihr Lob gerne an unsere Mitarbeitenden weiter. Vielen Dank für Ihr Vertrauen!",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Lorenz Matter",
+      "stars": 5,
+      "date": "vor 2 Monaten",
+      "text": "Hervorragende Ausführung der Malerarbeiten und freundliche, kompetente Handwerker.",
+      "truncated": false,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank für Ihre positive Bewertung! Wir freuen uns, dass Sie mit den Malerarbeiten und unserem Team zufrieden waren. Wir geben Ihr Lob gerne an unsere Mitarbeitenden weiter. Vielen Dank für Ihr Vertrauen!",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Rita Stierli",
+      "stars": 5,
+      "date": "vor 9 Monaten",
+      "text": "Hervorragende Arbeit. Ich glaube, ich habe noch nie einen so guten, präzisen, zuverlässigen, fleissigen, aber auch freundlichen und rücksichtsvollen Handwerker wie Lukas getroffen.",
+      "truncated": false,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen herzlichen Dank für Ihre positive Bewertung. Es freut uns sehr zu hören, dass Sie mit Ihrer Erfahrung bei uns zufrieden waren. Wir geben Ihr Lob gerne an unsere Mitarbeitenden weiter.",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Julia Jaeggi",
+      "stars": 5,
+      "date": "vor 2 Monaten",
+      "text": "Sehr saubere und hervorragende Arbeit! Vielen herzlichen Dank!",
+      "truncated": false,
+      "ownerResponse": {
+        "date": "",
+        "text": "Vielen Dank für Ihre positive Bewertung! Es freut uns sehr, dass Sie mit unserer sauberen und guten Arbeit zufrieden sind.",
+        "truncated": false
+      }
+    },
+    {
+      "name": "Simon Dietrich",
+      "stars": 5,
+      "date": "vor 6 Jahren",
+      "text": "Angenehme Zusammenarbeit in der Planungsphase und vor Ort mit den Malern. Die Mitarbeitenden haben hervorragende Arbeit geleistet und alles sauber hinterlassen. Gerne wieder beim nächsten Malerauftrag.",
+      "truncated": false,
+      "ownerResponse": null
+    },
+    {
+      "name": "Markus Stäger",
+      "stars": 5,
+      "date": "vor 6 Jahren",
+      "text": "Der beste Maler in der Gegend.\n\nAlles war perfekt 😊.",
+      "truncated": true,
+      "ownerResponse": null
+    }
+  ]
+}

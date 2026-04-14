@@ -73,7 +73,7 @@ export default function BeforeAfterSlider({
       <span className="absolute top-3 left-3 text-[11px] font-bold tracking-widest uppercase text-white bg-black/40 backdrop-blur-sm px-2 py-1 rounded pointer-events-none">
         Vorher
       </span>
-      <span className="absolute top-3 right-3 text-[11px] font-bold tracking-widest uppercase text-white bg-[var(--brand)]/80 backdrop-blur-sm px-2 py-1 rounded pointer-events-none">
+      <span className="absolute top-3 right-3 text-[11px] font-bold tracking-widest uppercase text-white bg-[var(--brand-tertiary)]/85 backdrop-blur-sm px-2 py-1 rounded pointer-events-none">
         Nachher
       </span>
     </div>
