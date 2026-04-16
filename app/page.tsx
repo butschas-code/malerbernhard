@@ -328,7 +328,7 @@ export default function HomePage() {
               <motion.div className="absolute inset-0 will-change-transform" style={{ y: introImgY }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80"
+                  src="/generationen_04.jpg"
                   alt="Maler bei der Arbeit"
                   className="w-full h-[115%] object-cover -top-[7%] relative"
                 />

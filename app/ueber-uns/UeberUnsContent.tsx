@@ -109,20 +109,29 @@ const certifications = [
   },
 ];
 
-const sectionVisuals: Record<string, { src: string; alt: string }> = {
+type SectionVisual =
+  | { kind: "image"; src: string; alt: string }
+  | { kind: "video"; src: string; alt: string; poster?: string }
+  | { kind: "youtube"; videoId: string; alt: string };
+
+const sectionVisuals: Record<string, SectionVisual> = {
   philosophie: {
-    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=85",
+    kind: "video",
+    src: "https://www.malerbernhard.ch/domains/devmalerbernhard_ch/data/free_docs/movie.mp4",
     alt: "Handwerk mit Qualität und Sorgfalt",
   },
   generationen: {
-    src: "https://images.unsplash.com/photo-1578302758063-5f57fb21ce2d?w=1600&q=85",
+    kind: "youtube",
+    videoId: "l_S8Pr_eJdM",
     alt: "Familientradition seit 1911",
   },
   engagement: {
+    kind: "image",
     src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=85",
     alt: "Engagement für die Gemeinschaft",
   },
   knowhow: {
+    kind: "image",
     src: "https://images.unsplash.com/photo-1503602642458-232111445657?w=1600&q=85",
     alt: "Zertifikate und Knowhow",
   },
@@ -131,9 +140,35 @@ const sectionVisuals: Record<string, { src: string; alt: string }> = {
 function SectionBanner({ sectionKey }: { sectionKey: keyof typeof sectionVisuals }) {
   const v = sectionVisuals[sectionKey];
   return (
-    <div className="relative mb-10 lg:mb-14 rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] aspect-[21/9] min-h-[200px] max-h-[380px] ring-1 ring-black/[0.06]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-cover" />
+    <div className="relative mb-10 lg:mb-14 rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] aspect-[21/9] min-h-[200px] max-h-[380px] ring-1 ring-black/[0.06] bg-[var(--ink)]">
+      {v.kind === "image" && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-cover" />
+      )}
+      {v.kind === "video" && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label={v.alt}
+          poster={v.poster}
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={v.src} type="video/mp4" />
+        </video>
+      )}
+      {v.kind === "youtube" && (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${v.videoId}?autoplay=1&mute=1&loop=1&playlist=${v.videoId}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&disablekb=1&iv_load_policy=3`}
+          title={v.alt}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none border-0"
+          style={{ width: "calc(100% * 16 / 9)", aspectRatio: "16 / 9" }}
+        />
+      )}
       <div
         className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/35 via-black/5 to-transparent"
         aria-hidden
