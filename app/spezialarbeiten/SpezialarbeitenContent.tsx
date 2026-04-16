@@ -5,8 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const HERO_PLACEHOLDER =
-  "https://placehold.co/1920x1080/143870/f5f2ed/png?text=Spezialarbeiten";
+const HERO_PLACEHOLDER = "/hero_spezialarbeiten.png";
 
 const overview = [
   { id: "schimmelpilzsanierung", label: "Schimmelpilzsanierung" },
@@ -172,7 +171,7 @@ export default function SpezialarbeitenContent() {
           style={{
             zIndex: 1,
             background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.38) 100%), linear-gradient(to left, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0) 78%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.62) 100%), linear-gradient(to left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 78%)",
           }}
         />
 
