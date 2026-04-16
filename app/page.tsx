@@ -15,36 +15,31 @@ const services = [
   {
     label: "Innenraum",
     href: "/malerarbeiten#innenraum",
-    image:
-      "https://www.malerbernhard.ch/domains/devmalerbernhard_ch/data/galleries/jGal_500322/innenraum_01.jpg",
+    image: "/service_innenraum.png",
     text: "Von der einfachen Pinsel-Renovation bis zu komplexen Um- und Neubauten — mit gut ausgebildeten Fachkräften.",
   },
   {
     label: "Aussenraum & Fassade",
     href: "/malerarbeiten#aussenraum-fassade",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image: "/service_aussenraum_fassade.png",
     text: "Schutz und Werterhaltung Ihrer Liegenschaft durch qualitativ hochwertige Fassadenarbeiten.",
   },
   {
     label: "Raumgestaltung",
     href: "/malerarbeiten#raumgestaltung",
-    image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80",
+    image: "/service_raumgestaltung.png",
     text: "Lasurtechniken, Spachtel, Schablonen, Vergoldungen — handwerkliche Kreativität für Ihren Wohntraum.",
   },
   {
     label: "Spezialarbeiten",
     href: "/spezialarbeiten",
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+    image: "/service_spezialarbeiten.png",
     text: "Schimmelpilzsanierung, EMF-Abschirmung, Naturofloor und Niederdruck-Strahlen.",
   },
   {
     label: "Historische Bauten",
     href: "/malerarbeiten#historische-bauten",
-    image:
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
+    image: "/service_historische_bauten.png",
     text: "Eidg. anerkannte Fachkräfte für Denkmalpflege. Werterhaltung mit Respekt vor der Bausubstanz.",
   },
   {
@@ -404,81 +399,54 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
-          {/* Mosaic bento: col1-tall | col2-3-wide / col2+col3 / col1-2-wide | col3 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[256px_256px_256px] gap-3 md:gap-3">
-            {services.map((svc, i) => {
-              const bentoClass = [
-                "lg:col-start-1 lg:col-span-1 lg:row-start-1 lg:row-span-2",
-                "lg:col-start-2 lg:col-span-2 lg:row-start-1 lg:row-span-1",
-                "lg:col-start-2 lg:col-span-1 lg:row-start-2 lg:row-span-1",
-                "lg:col-start-3 lg:col-span-1 lg:row-start-2 lg:row-span-1",
-                "lg:col-start-1 lg:col-span-2 lg:row-start-3 lg:row-span-1",
-                "lg:col-start-3 lg:col-span-1 lg:row-start-3 lg:row-span-1",
-              ][i];
-
-              return (
-                <motion.div
-                  key={svc.href}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className={`relative min-h-[220px] sm:min-h-0 aspect-[4/3] sm:aspect-auto ${bentoClass}`}
+          {/* Classic 3×2 grid — all tiles equal */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {services.map((svc, i) => (
+              <motion.div
+                key={svc.href}
+                initial={{ opacity: 0, scale: 0.97 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="relative aspect-[4/3]"
+              >
+                <Link
+                  href={svc.href}
+                  className="group absolute inset-0 rounded-2xl overflow-hidden block"
                 >
-                  <Link
-                    href={svc.href}
-                    className="group absolute inset-0 rounded-2xl overflow-hidden block"
-                  >
-                    {/* Image */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={svc.image}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-                    />
+                  {/* Image */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={svc.image}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                  />
 
-                    {/* Permanent dark vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-black/0 pointer-events-none" />
+                  {/* Permanent dark vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-black/0 pointer-events-none" />
 
-                    {/* Hover colour wash */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{ background: "linear-gradient(160deg, color-mix(in srgb, var(--brand-tertiary) 38%, transparent), transparent 60%)" }}
-                    />
+                  {/* Hover colour wash */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ background: "linear-gradient(160deg, color-mix(in srgb, var(--brand-tertiary) 38%, transparent), transparent 60%)" }}
+                  />
 
-                    {/* Top badge — featured only */}
-                    {i === 0 && (
-                      <span
-                        className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/30 z-10"
-                        style={{ background: "color-mix(in srgb, var(--brand-tertiary) 70%, black)" }}
-                      >
-                        Top
-                      </span>
-                    )}
-
-                    {/* Text overlay: .bento-card-overlay + globals beats `h3`/`p` ink rules; inner div inherits text-white */}
-                    <div className="bento-card-overlay absolute bottom-0 left-0 right-0 p-4 md:p-5 z-10 text-white">
-                      <h3 className={`font-bold leading-tight mb-1 ${i === 0 ? "text-[1.3rem]" : i === 1 || i === 4 ? "text-[1.15rem]" : "text-[1rem]"}`}>
-                        {svc.label}
-                      </h3>
-                      {i === 0 || i === 1 || i === 4 ? (
-                        <p className="text-[13.5px] leading-snug line-clamp-2">{svc.text}</p>
-                      ) : (
-                        <div className="text-[12.5px] leading-snug line-clamp-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          {svc.text}
-                        </div>
-                      )}
-                      <span className="inline-flex items-center gap-1 mt-2 text-[12px] font-semibold">
-                        Mehr erfahren
-                        <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden>
-                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
+                  {/* Text overlay */}
+                  <div className="bento-card-overlay absolute bottom-0 left-0 right-0 p-4 md:p-5 z-10 text-white">
+                    <h3 className="font-bold leading-tight mb-1 text-[1.15rem]">
+                      {svc.label}
+                    </h3>
+                    <p className="text-[13.5px] leading-snug line-clamp-2">{svc.text}</p>
+                    <span className="inline-flex items-center gap-1 mt-2 text-[12px] font-semibold">
+                      Mehr erfahren
+                      <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden>
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
