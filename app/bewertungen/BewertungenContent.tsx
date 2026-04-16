@@ -7,8 +7,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { reviews, aggregateRating, formatReviewDateGerman } from "@/lib/reviews";
 import type { Review } from "@/lib/reviews";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85";
+const HERO_IMAGE = "/hero_bewertungen.png";
 
 const heroStamps = ["5.0 Google Stars", "26 Bewertungen", "Seit 1911"];
 
@@ -271,7 +270,7 @@ export default function BewertungenContent() {
           style={{
             zIndex: 1,
             background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.38) 100%), linear-gradient(to left, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0) 78%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.62) 100%), linear-gradient(to left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 78%)",
           }}
         />
 
