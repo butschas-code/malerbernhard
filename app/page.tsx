@@ -140,7 +140,7 @@ export default function HomePage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/home_hero.mp4" type="video/mp4" />
+            <source src="/home_hero_01.mp4" type="video/mp4" />
           </video>
         </motion.div>
 
