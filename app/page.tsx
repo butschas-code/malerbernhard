@@ -465,13 +465,6 @@ export default function HomePage() {
             backgroundImage: `radial-gradient(ellipse 60% 40% at 50% 0%, color-mix(in srgb, var(--brand-secondary) 10%, transparent), transparent)`,
           }}
         />
-        <div
-          className="absolute top-1/2 left-0 right-0 h-px -translate-y-1/2 hidden md:block pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand-secondary) 35%, var(--line)) 20%, color-mix(in srgb, var(--brand-tertiary) 30%, var(--line)) 80%, transparent)",
-          }}
-        />
         <div className="container relative">
           <AnimatedSection className="text-center mb-14">
             <span className="brand-rule mx-auto" />
@@ -481,7 +474,16 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
+          {/* connector line sits inside the grid, top aligned to badge centre (half of 4.25rem badge height) */}
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10 relative">
+            {/* horizontal connector — desktop */}
+            <div
+              className="absolute left-0 right-0 h-px pointer-events-none hidden md:block"
+              style={{
+                top: "calc(4.25rem / 2)",
+                background: "linear-gradient(90deg, transparent, color-mix(in srgb, var(--brand-secondary) 35%, var(--line)) 20%, color-mix(in srgb, var(--brand-tertiary) 30%, var(--line)) 80%, transparent)",
+              }}
+            />
             {processSteps.map((step, i) => (
               <motion.div
                 key={step.n}
