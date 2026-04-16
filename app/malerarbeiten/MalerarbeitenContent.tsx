@@ -18,19 +18,19 @@ const overview = [
 /** Full-bleed imagery per service — curated stock for atmosphere */
 const sectionVisuals: Record<string, { src: string; alt: string }> = {
   innenraum: {
-    src: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1600&q=85",
+    src: "/service_innenraum.png",
     alt: "Malerarbeiten im Innenbereich",
   },
   "aussenraum-fassade": {
-    src: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=1600&q=85",
+    src: "/service_aussenraum_fassade.png",
     alt: "Fassade und Aussenbereich",
   },
   raumgestaltung: {
-    src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85",
+    src: "/service_raumgestaltung.png",
     alt: "Raumgestaltung und Farbwirkung",
   },
   "historische-bauten": {
-    src: "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1600&q=85",
+    src: "/service_historische_bauten.png",
     alt: "Historische Architektur",
   },
   "kt-color": {
