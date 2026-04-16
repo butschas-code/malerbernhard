@@ -139,9 +139,9 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="hidden md:inline-flex items-center justify-center w-9 h-9 rounded text-white/80 hover:text-white transition-colors duration-200"
+              className="hidden md:inline-flex items-center justify-center w-9 h-9 rounded text-white hover:opacity-80 transition-opacity duration-200"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" strokeWidth="1.8"/>
                 <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.8"/>
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
