@@ -137,12 +137,19 @@ const ktSwatches = [
 ];
 
 const impressionGrid = [
-  "https://www.malerbernhard.ch/domains/devmalerbernhard_ch/data/galleries/jGal_500322/innenraum_01.jpg",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80",
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
-  "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-  "https://www.malerbernhard.ch/domains/devmalerbernhard_ch/data/galleries/jGal_500322/innenraum_04.jpg",
+  "/impressionen_01.png",
+  "/impressionen_02.png",
+  "/impressionen_03.png",
+  "/impressionen_04.png",
+  "/impressionen_05.png",
+  "/impressionen_06.png",
+  "/impressionen_07.png",
+  "/impressionen_08.png",
+  "/impressionen_09.png",
+  "/impressionen_10.png",
+  "/impressionen_11.png",
+  "/impressionen_12.png",
+  "/impressionen_13.png",
 ];
 
 const heroStamps = ["Glatttal & Zürich", "Seit 1911", "Meisterbetrieb"];
