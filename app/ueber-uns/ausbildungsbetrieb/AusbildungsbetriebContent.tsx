@@ -91,7 +91,7 @@ export default function AusbildungsbetriebContent() {
           <img
             src={HERO_IMAGE}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
         </motion.div>
 
