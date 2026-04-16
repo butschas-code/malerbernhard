@@ -131,7 +131,7 @@ a:focus-visible {
 }
 
 .section {
-  padding-block: clamp(5rem, 10vw, 9rem);
+  padding-block: clamp(3rem, 10vw, 9rem);
 }
 
 /* Interior pages — same surfaces as home (intro + services bands) */
@@ -336,6 +336,7 @@ a:focus-visible {
 }
 
 /* ─── Button primitives ─── */
+@layer components {
 .btn {
   display: inline-flex;
   align-items: center;
@@ -350,6 +351,7 @@ a:focus-visible {
   border: none;
   text-decoration: none;
   touch-action: manipulation;
+}
 }
 
 .btn-primary {

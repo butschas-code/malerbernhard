@@ -215,15 +215,15 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.42 }}
-              className="flex flex-wrap justify-end gap-3 mt-8"
+              className="flex flex-col sm:flex-row flex-wrap justify-end gap-3 mt-8"
             >
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <Link href="/kontakt/anfrage" className="btn btn-primary">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+                <Link href="/kontakt/anfrage" className="btn btn-primary w-full sm:w-auto justify-center">
                   Offerte anfragen
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <a href="tel:+41448332251" className="btn btn-white">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+                <a href="tel:+41448332251" className="btn btn-white w-full sm:w-auto justify-center">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--brand-tertiary)" strokeWidth="2" strokeLinecap="round">
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
                   </svg>
@@ -533,7 +533,7 @@ export default function HomePage() {
           }}
         />
         <div className="container relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <AnimatedSection direction="left">
               <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-[var(--muted)] mb-2">Warum Bernhard?</p>
               <h2 className="mb-6 text-gradient-heading">
@@ -639,7 +639,7 @@ export default function HomePage() {
               radial-gradient(ellipse 80% 60% at 100% 0%, color-mix(in srgb, var(--brand-secondary) 16%, transparent), transparent)`,
           }}
         />
-        <div className="container py-20 relative">
+        <div className="container py-12 md:py-20 relative">
           <div className="max-w-2xl">
             <AnimatedSection>
               <span className="brand-rule" />
@@ -648,14 +648,14 @@ export default function HomePage() {
                 Kontaktieren Sie uns für eine unverbindliche Beratung. Wir melden uns schnell zurück und besichtigen Ihr
                 Objekt persönlich.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <Link href="/kontakt/anfrage" className="btn btn-primary">
+                  <Link href="/kontakt/anfrage" className="btn btn-primary w-full sm:w-auto justify-center">
                     Offerte anfragen
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <Link href="/kontakt" className="btn btn-outline">
+                  <Link href="/kontakt" className="btn btn-outline w-full sm:w-auto justify-center">
                     Kontakt aufnehmen
                   </Link>
                 </motion.div>
